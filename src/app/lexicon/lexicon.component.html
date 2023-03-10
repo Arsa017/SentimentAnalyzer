@@ -1,0 +1,156 @@
+<hr>
+<form>
+  <span style="font-weight: bolder;">Words in lexicon</span>
+  <table>
+    <tr>
+      <td>Word</td>
+      <td>Sentiment Score</td>
+    </tr>
+    <tr *ngFor="let l of lexicon">
+      <td class="column">
+        {{l.word}}
+      </td>
+      <td class="column">
+        <div [ngStyle]="{ color: l.sentimentScore < 0 ? 'red' : 'green'}">{{l.sentimentScore}}</div>
+      </td>
+    </tr>
+  </table>
+</form>
+<br>
+<form>
+  <table>
+    <tr>
+      <td>
+        <select name="filterVal" [(ngModel)]="filterVal">
+          <option value="all">All words</option>
+          <option value="negative">Negative</option>
+          <option value="positive">Positive</option>
+        </select>
+      </td>
+      <td>
+        <button (click)="filter()">Filter</button>
+      </td>
+    </tr>
+  </table>
+</form>
+<hr>
+<form>
+  <table>
+
+  </table>
+  <tr>
+    <td style="font-weight: bolder;">
+      Find word
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input style="width: 5rem;" type="text" name="wordToFind" [(ngModel)]="wordToFind">
+    </td>
+    <td>
+      <button (click)="find()">Find</button>
+    </td>
+    <tr>
+  </tr>
+  <tr class="foundWord">
+    <td>{{foundedWord.word}}</td>
+    <td>{{foundedWord.sentimentScore}}</td>
+  </tr>
+</form>
+<hr>
+
+<form>
+  <table>
+    <tr>
+      <td style="font-weight: bolder;">
+        Add new word
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Word
+      </td>
+      <td>
+        <input type="text" name="newWord" [(ngModel)]="newWord">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Sentiment score
+      </td>
+      <td>
+        <input type="text" name="newWord" [(ngModel)]="newScore">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button (click)="addWord()">Add</button>
+      </td>
+    </tr>
+  </table>
+</form>
+<hr>
+
+<form>
+  <table>
+    <tr>
+      <td style="font-weight: bolder;">
+        Update word
+      </td>
+    </tr>
+    <tr>
+        <td>
+          Chose word
+        </td>
+        <td>
+          <select style="width: 6.5rem;" name="oldWordUpdate" [(ngModel)]="oldWordUpdate">
+            <option></option>
+            <option *ngFor="let l of origiLexicon" value="{{l.word}}">{{l.word}}</option>
+          </select>
+        </td>
+    </tr>
+    <tr>
+      <td>
+        New word
+      </td>
+      <td>
+        <input style="width: 6rem;" type="text" name="newWordUpdate" [(ngModel)]="newWordUpdate">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        New score
+      </td>
+      <td>
+        <input style="width: 6rem;" type="text" name="newWordUpdate" [(ngModel)]="newScoreUpdate">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button (click)="updateWord()">Update</button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+<hr>
+<form>
+  <table>
+    <tr>
+        <td style="font-weight: bolder;">
+          Delete word
+        </td>
+    </tr>
+    <tr>
+      <td>
+        <select style="width: 6.5rem;" name="deleteWord" [(ngModel)]="deleteWord">
+          <option></option>
+          <option *ngFor="let l of origiLexicon" value="{{l.word}}">{{l.word}}</option>
+        </select>
+      </td>
+      <td>
+        <button (click)="delete()">Delete</button>
+      </td>
+    </tr>
+  </table>
+</form>

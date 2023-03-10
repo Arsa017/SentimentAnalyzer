@@ -1,0 +1,39 @@
+<br>
+<form>
+  <span style="font-weight: bolder; font-size: large;">Input text for calculation</span>
+  <table>
+    <tr>
+      <textarea placeholder="Text to insert..." class="area" name="textArea" [(ngModel)]="textArea"></textarea>
+    </tr>
+    <tr>
+      <td>
+        <button (click)="calculate()">Calculate</button>
+      </td>
+    </tr>
+  </table>
+</form>
+<hr>
+<form>
+  <span style="font-weight: bolder; font-size: large;">Upload .txt file for calculation</span>
+  <br>
+  <table>
+    <tr>
+      <input type="file" (change)="onFileSelected($event)">
+    </tr>
+    <tr>
+      <button style="width: 5.5rem;" (click)="calculateFromFile()">Calculate</button>
+    </tr>
+  </table>
+</form>
+
+<!--
+<br><br><br><br><br>
+<form>
+  <table>
+    <tr *ngFor="let l of lexicon">
+      <td>{{l.word}}</td>
+      <td>{{l.sentimentScore}}</td>
+    </tr>
+  </table>
+</form>
+-->
